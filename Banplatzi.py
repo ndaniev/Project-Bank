@@ -15,15 +15,14 @@ def interfaz():
     print('\t2 - Agregar cliente a fila de apertura de cuenta')
     print('\t3 - Atender cliente')
     print('\t4 - Listar clientes en fila')
+    print('\t9 - Salir')
     print()
-
 
 def agregar_clientes_apertura(nombre):
     clientes_apertura.append([nombre])
     with open('db.csv', 'w', newline='') as file:
         writer = csv.writer(file, delimiter=',')
         writer.writerows(clientes_apertura)
-
 
 def agregar_cliente_deposito(nombre):
     clientes_deposito.append([nombre])
@@ -32,33 +31,41 @@ def agregar_cliente_deposito(nombre):
         writer = csv.writer(file, delimiter=',')
         writer.writerows(clientes_deposito)
 
-
 def atender_cliente(list1, list2):
     if bool(list1) is True:
-        print('Hay elementos en clientes de apertura')
+        print('Se atendio el Cliente: {0}'.format(list1[0]))
         list1.pop(0)
     elif bool(list2) is True:
-        print('Hay elementos en clientes de deposito')
+        print('Se atendio el Cliente: {0}'.format(list2[0]))
         list2.pop(0)
     else:
         print('Se acabaron los clientes, Lo siento:c')
 
+    salir = True
+    while salir is True:
+        opcionInterfaz = str(input('Deseas ir a Inicio? (y/n) >> '))
+        if opcionInterfaz == 'y':
+            break
+        else:
+            pass
 
 def listar_clientes(list1, list2):
+    os.system('cls')
     print('Clientes Apertura:', len(list1))
-    for row in list1:
-        print(str(row))
+    for ca in list1:
+        print(str(ca))
 
     print('Clientes Deposito: ', len(list2))
-    for row in list2:
-        print(row)
+    for cp in list2:
+        print(cp)
 
     salir = True
     while salir is True:
-        opcionInterfaz = input('Deseas ir a Inicio? (y/n) >> ')
-        if opcionInterfaz == 'y' or 'Y':
-            salir = False
-
+        opcionInterfaz = str(input('Deseas ir a Inicio? (y/n) >> '))
+        if opcionInterfaz == 'y':
+            break
+        else:
+            pass
 
 def nombre():
     nombre = str(input('Inserta Nombre Completo :  '))
