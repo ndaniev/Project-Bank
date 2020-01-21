@@ -20,14 +20,14 @@ def interfaz():
 
 def agregar_clientes_apertura(nombre):
     clientes_apertura.append([nombre])
-    with open('db.csv', 'w', newline='') as file:
+    with open('clientesapertura.csv', 'w', newline='') as file:
         writer = csv.writer(file, delimiter=',')
         writer.writerows(clientes_apertura)
 
 def agregar_cliente_deposito(nombre):
     clientes_deposito.append([nombre])
 
-    with open('db2.csv', 'w', newline='') as file:
+    with open('clientesdeposito.csv', 'w', newline='') as file:
         writer = csv.writer(file, delimiter=',')
         writer.writerows(clientes_deposito)
 
@@ -90,4 +90,4 @@ if __name__ == '__main__':
         elif opcionMenu == '9':
             break
         else:
-            print('Intentalo de Nuevo! ')
+            pass
